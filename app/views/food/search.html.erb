@@ -1,0 +1,18 @@
+<%= form_tag(food_search_path, method: :get) do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+<% if @results.present? %>
+  <h1>Food Found</h1>
+  <ul>
+    <% @results.each do |food| %>
+      <li><%= food["title"] %></li>
+      <%= image_tag food["thumbnail"] %>
+      <a href="<%= food["href"]%>">Website</a>
+      <p><%= food["ingredients"] %></p>
+      <br>
+    <% end %>
+  </ul>
+<% end %>
